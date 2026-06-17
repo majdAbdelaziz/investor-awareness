@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الأدوات | وعي المستثمر الصغير</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-shield">🛡</span><span class="logo-text">وعي المستثمر</span></a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a><a href="learn.html">تعلّم</a><a href="tools.html">الأدوات</a><a href="blog/index.html">المدونة</a>
+        <a href="quiz.html" class="btn-nav">اختبر نفسك</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">الرئيسية</a><a href="learn.html">تعلّم</a><a href="tools.html">الأدوات</a><a href="blog/index.html">المدونة</a><a href="quiz.html">اختبر نفسك</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">حمايتك أولاً</span>
+    <h1>أدوات الفحص والحماية</h1>
+    <p>أدوات تفاعلية تساعدك على الكشف عن الاحتيال قبل أن تتخذ أي قرار</p>
+  </div>
+
+  <div class="container">
+    <div class="tools-grid">
+
+      <!-- AI Analyzer -->
+      <div class="tool-card" id="ai">
+        <div class="tool-icon">🤖</div>
+        <h3>المستشار الآلي — تحليل العروض</h3>
+        <p>الصق أي رسالة أو عرض استثماري وسيحلله الذكاء الاصطناعي بحثاً عن علامات الاحتيال</p>
+        <textarea id="aiText" rows="5" placeholder="الصق هنا نص الرسالة أو العرض الاستثماري..."></textarea>
+        <button class="btn-primary" onclick="analyzeText()">تحليل فوري</button>
+        <div id="aiResult" class="tool-result"></div>
+      </div>
+
+      <!-- Platform Checker -->
+      <div class="tool-card" id="checker">
+        <div class="tool-icon">🔍</div>
+        <h3>مركز التحقق من المنصات</h3>
+        <p>أدخل اسم المنصة أو رابطها للتحقق من مصداقيتها</p>
+        <input type="url" id="platformUrl" placeholder="اسم المنصة أو الرابط..." />
+        <button class="btn-primary" onclick="checkPlatform()">تحقق الآن</button>
+        <div id="platformResult" class="tool-result"></div>
+      </div>
+
+      <!-- Report Fraud -->
+      <div class="tool-card" id="report">
+        <div class="tool-icon">🚨</div>
+        <h3>شبكة مُبلِّغ — الإبلاغ عن احتيال</h3>
+        <p>شارك تجربتك لتحذير الآخرين وبناء قاعدة بيانات تفاعلية من الجمهور</p>
+        <textarea id="reportText" rows="4" placeholder="صف تجربتك مع المنصة أو الشخص المحتال..."></textarea>
+        <input type="url" id="reportUrl" placeholder="رابط المنصة المشبوهة (اختياري)" style="margin-top:8px;" />
+        <button class="btn-primary" onclick="submitReport()" style="margin-top:8px;">إرسال البلاغ</button>
+        <div id="reportResult" class="tool-result"></div>
+      </div>
+
+      <!-- Legal Support -->
+      <div class="tool-card" id="legal">
+        <div class="tool-icon">⚖️</div>
+        <h3>الدعم القانوني — السند</h3>
+        <p>هل وقعت ضحية احتيال مالي رقمي؟ فريقنا القانوني يساعدك في فهم خياراتك</p>
+        <div style="background:var(--bg); border-radius:10px; padding:20px; margin-bottom:16px;">
+          <p style="margin:0; font-size:0.9rem; color:var(--text-muted); line-height:1.8;">
+            ✅ استشارة أولية مجانية<br>
+            ✅ مراجعة الأدلة والوثائق<br>
+            ✅ إرشادات للإبلاغ القانوني<br>
+            ✅ متابعة القضية مع الجهات المختصة
+          </p>
+        </div>
+        <a href="mailto:info@protection-ecosystem.com?subject=طلب دعم قانوني" class="btn-primary" style="display:block; text-align:center;">تواصل مع الفريق القانوني</a>
+      </div>
+
+      <!-- Danger Meter -->
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <h3>مقياس الخطورة السريع</h3>
+        <p>أجب على 5 أسئلة لتقييم مستوى خطورة العرض الاستثماري الذي أمامك</p>
+        <div id="meterQuestions">
+          <div class="meter-q" style="margin-bottom:12px;">
+            <p style="font-family:var(--font-display); font-weight:600; font-size:0.9rem; margin-bottom:8px; color:var(--navy);">هل يضمن العرض أرباحاً محددة؟</p>
+            <label style="margin-left:16px; font-size:0.88rem; cursor:pointer;"><input type="radio" name="q1" value="1"> نعم</label>
+            <label style="font-size:0.88rem; cursor:pointer;"><input type="radio" name="q1" value="0"> لا</label>
+          </div>
+          <div class="meter-q" style="margin-bottom:12px;">
+            <p style="font-family:var(--font-display); font-weight:600; font-size:0.9rem; margin-bottom:8px; color:var(--navy);">هل يوجد ضغط للقرار السريع؟</p>
+            <label style="margin-left:16px; font-size:0.88rem; cursor:pointer;"><input type="radio" name="q2" value="1"> نعم</label>
+            <label style="font-size:0.88rem; cursor:pointer;"><input type="radio" name="q2" value="0"> لا</label>
+          </div>
+          <div class="meter-q" style="margin-bottom:12px;">
+            <p style="font-family:var(--font-display); font-weight:600; font-size:0.9rem; margin-bottom:8px; color:var(--navy);">هل المنصة مرخصة من جهة معروفة؟</p>
+            <label style="margin-left:16px; font-size:0.88rem; cursor:pointer;"><input type="radio" name="q3" value="0"> نعم</label>
+            <label style="font-size:0.88rem; cursor:pointer;"><input type="radio" name="q3" value="1"> لا / غير واضح</label>
+          </div>
+          <div class="meter-q" style="margin-bottom:12px;">
+            <p style="font-family:var(--font-display); font-weight:600; font-size:0.9rem; margin-bottom:8px; color:var(--navy);">هل الأرباح المعروضة غير واقعية (أكثر من 10% شهرياً)؟</p>
+            <label style="margin-left:16px; font-size:0.88rem; cursor:pointer;"><input type="radio" name="q4" value="1"> نعم</label>
+            <label style="font-size:0.88rem; cursor:pointer;"><input type="radio" name="q4" value="0"> لا</label>
+          </div>
+          <div class="meter-q" style="margin-bottom:16px;">
+            <p style="font-family:var(--font-display); font-weight:600; font-size:0.9rem; margin-bottom:8px; color:var(--navy);">هل تعرفت على المنصة عبر رسالة غير مطلوبة أو مجموعة؟</p>
+            <label style="margin-left:16px; font-size:0.88rem; cursor:pointer;"><input type="radio" name="q5" value="1"> نعم</label>
+            <label style="font-size:0.88rem; cursor:pointer;"><input type="radio" name="q5" value="0"> لا</label>
+          </div>
+          <button class="btn-primary" onclick="calcMeter()">احسب مستوى الخطر</button>
+          <div id="meterResult" class="tool-result"></div>
+        </div>
+      </div>
+
+      <!-- Shield -->
+      <div class="tool-card" id="shield">
+        <div class="tool-icon">⚔️</div>
+        <h3>درع المستثمر — تغذية حية</h3>
+        <p>آخر محاولات الاحتيال المرصودة من مجتمع المستخدمين</p>
+        <div id="liveAlerts" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;"></div>
+        <a href="blog/scam-tactics.html" class="btn-primary" style="display:block; text-align:center;">اقرأ عن أحدث الأساليب</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo"><span class="logo-shield">🛡</span><span class="logo-text">وعي المستثمر</span></div><p>نحو فضاء استثماري عربي آمن وموثوق</p><a href="mailto:info@protection-ecosystem.com">info@protection-ecosystem.com</a></div>
+        <div class="footer-col"><h4>تعلّم</h4><a href="learn.html">الأكاديمية</a><a href="quiz.html">اختبر نفسك</a></div>
+        <div class="footer-col"><h4>الأدوات</h4><a href="tools.html">مركز التحقق</a><a href="tools.html#ai">المستشار الآلي</a></div>
+        <div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">كل المقالات</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 مشروع الحماية الرقمية. جميع الحقوق محفوظة.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Red flag keywords for AI analyzer
+    const redFlags = [
+      { kw: ['ضمان', 'مضمون', 'مضمونة'], weight: 3, msg: 'وعد بضمان الأرباح' },
+      { kw: ['100%', 'مئة بالمئة'], weight: 3, msg: 'ادعاء ربح 100%' },
+      { kw: ['عرض محدود', 'فرصة محدودة', 'ينتهي', 'أسرع'], weight: 2, msg: 'ضغط بالوقت' },
+      { kw: ['VIP', 'فيب', 'حصري', 'خاص', 'سري'], weight: 2, msg: 'ادعاء حصرية مصطنعة' },
+      { kw: ['روبوت', 'بوت ذكاء'], weight: 2, msg: 'ادعاء روبوت ذكاء اصطناعي سحري' },
+      { kw: ['أرباح يومية', 'يومي', 'ربح يومي'], weight: 2, msg: 'وعود بأرباح يومية' },
+      { kw: ['خبير', 'محترف', 'معتمد دولياً'], weight: 1, msg: 'ادعاء خبرة مبالغ فيها' },
+      { kw: ['سحب في أي وقت', 'سحب فوري', 'سيولة كاملة'], weight: 1, msg: 'وعد بسحب غير مقيّد' },
+      { kw: ['استثمار بدون مخاطر', 'بدون خسارة', 'صفر مخاطر'], weight: 3, msg: 'ادعاء غياب المخاطر' },
+    ];
+
+    function analyzeText() {
+      const text = document.getElementById('aiText').value.trim();
+      const result = document.getElementById('aiResult');
+      if (!text) { result.className = 'tool-result show warn'; result.textContent = '⚠️ يرجى إدخال نص للتحليل.'; return; }
+
+      let score = 0;
+      let found = [];
+      const lower = text.toLowerCase();
+      redFlags.forEach(f => {
+        f.kw.forEach(k => {
+          if (lower.includes(k.toLowerCase())) {
+            score += f.weight;
+            if (!found.includes(f.msg)) found.push(f.msg);
+          }
+        });
+      });
+
+      result.className = 'tool-result show';
+      if (score === 0) {
+        result.className += ' safe';
+        result.innerHTML = '✅ <strong>لم يُكتشف مؤشرات واضحة للاحتيال.</strong> هذا لا يعني بالضرورة أن العرض آمن — تحقق دائماً من ترخيص المنصة.';
+      } else if (score <= 3) {
+        result.className += ' warn';
+        result.innerHTML = `⚠️ <strong>مؤشرات تحذيرية بسيطة:</strong> ${found.join('، ')}. يُنصح بالتحقق الإضافي قبل اتخاذ أي قرار.`;
+      } else {
+        result.className += ' danger';
+        result.innerHTML = `🚨 <strong>مؤشرات احتيال عالية الخطورة:</strong> ${found.join('، ')}. لا تستثمر حتى تتحقق بشكل كامل.`;
+      }
+    }
+
+    function checkPlatform() {
+      const url = document.getElementById('platformUrl').value.trim();
+      const result = document.getElementById('platformResult');
+      if (!url) { result.className = 'tool-result show warn'; result.textContent = '⚠️ يرجى إدخال اسم المنصة أو رابطها.'; return; }
+
+      const suspicious = ['forex-vip', 'crypto-profit', 'invest-now', 'fastprofit', 'quickmoney', 'garanteed'];
+      const isSusp = suspicious.some(s => url.toLowerCase().includes(s));
+
+      result.className = 'tool-result show';
+      if (isSusp) {
+        result.className += ' danger';
+        result.innerHTML = '🚨 <strong>تحذير:</strong> هذه المنصة تحمل علامات مشبوهة. لا تودع أموالاً قبل التحقق الكامل.';
+      } else {
+        result.className += ' warn';
+        result.innerHTML = '⚠️ للتحقق الكامل، ابحث عن المنصة في موقع هيئة الأوراق المالية في دولتك ومحرك بحث مع كلمة "scam" أو "احتيال".';
+      }
+    }
+
+    function submitReport() {
+      const text = document.getElementById('reportText').value.trim();
+      const result = document.getElementById('reportResult');
+      if (!text) { result.className = 'tool-result show warn'; result.textContent = '⚠️ يرجى وصف تجربتك.'; return; }
+      result.className = 'tool-result show safe';
+      result.innerHTML = '✅ <strong>شكراً لك!</strong> تم استلام بلاغك. سيساعد في حماية الآخرين من الوقوع في الفخ نفسه.';
+      document.getElementById('reportText').value = '';
+      document.getElementById('reportUrl').value = '';
+    }
+
+    function calcMeter() {
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const sel = document.querySelector(`input[name="q${i}"]:checked`);
+        if (sel) score += parseInt(sel.value);
+      }
+      const result = document.getElementById('meterResult');
+      result.className = 'tool-result show';
+      if (score <= 1) {
+        result.className += ' safe';
+        result.innerHTML = `✅ <strong>مستوى الخطر: منخفض (${score}/5)</strong> — العرض يحمل مؤشرات أولية إيجابية. لكن تحقق دائماً من الترخيص.`;
+      } else if (score <= 3) {
+        result.className += ' warn';
+        result.innerHTML = `⚠️ <strong>مستوى الخطر: متوسط-عالي (${score}/5)</strong> — لا تستثمر قبل تحقق عميق. استشر شخصاً محايداً.`;
+      } else {
+        result.className += ' danger';
+        result.innerHTML = `🚨 <strong>مستوى الخطر: عالٍ جداً (${score}/5)</strong> — كل المؤشرات تشير إلى احتيال. ابتعد فوراً.`;
+      }
+    }
+
+    // Live alerts mock data
+    const alerts = [
+      { type: 'danger', text: 'تحذير: منصة "CryptoGoldVIP" تجمع بيانات بنكية دون ترخيص' },
+      { type: 'warn', text: 'تقارير عن مجموعة واتساب تروّج لعرض "ربح 50% أسبوعياً"' },
+      { type: 'danger', text: 'احتيال: حسابات تنتحل هوية مستشارين ماليين معروفين' },
+    ];
+
+    const alertsDiv = document.getElementById('liveAlerts');
+    alerts.forEach(a => {
+      const el = document.createElement('div');
+      el.className = `tool-result show ${a.type}`;
+      el.style.margin = '0';
+      el.textContent = (a.type === 'danger' ? '🚨 ' : '⚠️ ') + a.text;
+      alertsDiv.appendChild(el);
+    });
+  </script>
+</body>
+</html>

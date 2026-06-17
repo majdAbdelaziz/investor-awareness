@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبر جاهزيتك | وعي المستثمر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-shield">🛡</span><span class="logo-text">وعي المستثمر</span></a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a><a href="learn.html">تعلّم</a><a href="tools.html">الأدوات</a><a href="blog/index.html">المدونة</a>
+        <a href="quiz.html" class="btn-nav">اختبر نفسك</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">الرئيسية</a><a href="learn.html">تعلّم</a><a href="tools.html">الأدوات</a><a href="blog/index.html">المدونة</a><a href="quiz.html">اختبر نفسك</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="eyebrow">اختبر جاهزيتك</span>
+    <h1>هل أنت محصّن ضد الاحتيال؟</h1>
+    <p>10 أسئلة تكشف مستوى وعيك الاستثماري وتساعدك على تحديد نقاط الضعف</p>
+  </div>
+
+  <div class="quiz-container">
+    <div class="quiz-card">
+      <div class="quiz-progress" id="progress"></div>
+      <div id="quizContent"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="logo"><span class="logo-shield">🛡</span><span class="logo-text">وعي المستثمر</span></div></div>
+        <div class="footer-col"><h4>تعلّم</h4><a href="learn.html">الأكاديمية</a></div>
+        <div class="footer-col"><h4>الأدوات</h4><a href="tools.html">الأدوات</a></div>
+        <div class="footer-col"><h4>المدونة</h4><a href="blog/index.html">المدونة</a></div>
+      </div>
+      <div class="footer-bottom"><p>© 2024 مشروع الحماية الرقمية.</p></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const questions = [
+      {
+        q: 'وصلتك رسالة تقول: "استثمر 500$ الآن وستحصل على 2000$ في أسبوع مضموناً". ماذا تفعل؟',
+        opts: ['أستثمر فوراً', 'أبحث عن المنصة أولاً', 'أتجاهل الرسالة تماماً — هذا احتيال واضح', 'أسأل صديقاً'],
+        ans: 2,
+        explain: 'الوعد بضمان 4 أضعاف المبلغ في أسبوع هو مؤشر احتيال صريح. التجاهل هو القرار الصحيح.'
+      },
+      {
+        q: 'ما هو أول شيء تفعله قبل الاستثمار في أي منصة؟',
+        opts: ['أقرأ قصص نجاح العملاء', 'أتحقق من ترخيصها من جهة رقابية معتمدة', 'أنظر إلى واجهتها المتطورة', 'أجرّب بمبلغ صغير أولاً'],
+        ans: 1,
+        explain: 'الترخيص هو الدليل الوحيد الموثوق على الشرعية. قصص النجاح سهلة الاختلاق.'
+      },
+      {
+        q: 'صديق يعرفك منذ سنوات يقترح عليك "فرصة استثمار حصرية". ماذا تفعل؟',
+        opts: ['أثق به لأنني أعرفه جيداً', 'أطلب التفاصيل الكاملة وأتحقق بشكل مستقل', 'أرفض مباشرة دون نقاش', 'أستثمر نصف ما يقترحه'],
+        ans: 1,
+        explain: 'حتى الأصدقاء الموثوقون قد يكونون ضحايا هم أيضاً دون أن يعرفوا. التحقق المستقل ضروري دائماً.'
+      },
+      {
+        q: 'ما هو "مخطط بونزي"؟',
+        opts: ['نوع من العملات الرقمية الجديدة', 'نظام يدفع أرباح المستثمرين القدامى من أموال الجدد', 'منصة استثمار مرخصة', 'أداة تحليل مالي'],
+        ans: 1,
+        explain: 'مخطط بونزي يعتمد على استقطاب مستثمرين جدد لتمويل "أرباح" القدامى. ينهار حتماً حين يتوقف التدفق.'
+      },
+      {
+        q: 'وجدت منصة تدّعي أن روبوت ذكاء اصطناعي يحقق "أرباح 15% شهرياً مضمونة". كيف تقيّمها؟',
+        opts: ['رائعة! الذكاء الاصطناعي يستطيع ذلك', 'مشبوهة — لا يوجد روبوت يضمن أرباحاً ثابتة', 'معقولة إذا كان لديها ترخيص', 'أجرّبها بمبلغ صغير'],
+        ans: 1,
+        explain: 'أسواق العملات متقلبة بطبيعتها. لا يوجد برنامج يضمن 15% شهرياً (180% سنوياً!) بشكل مستدام.'
+      },
+      {
+        q: 'ما الفرق الأساسي بين الاستثمار والمقامرة؟',
+        opts: ['لا يوجد فرق', 'الاستثمار يعتمد على تحليل حقيقي والمخاطر محسوبة', 'المقامرة أكثر ربحاً', 'الاستثمار بدون مخاطر'],
+        ans: 1,
+        explain: 'الاستثمار السليم يقوم على فهم حقيقي للأصل وإدارة واعية للمخاطر، لا على الحظ.'
+      },
+      {
+        q: 'وصلتك رسالة تقول إنك ربحت 10,000$ في مسابقة لم تشارك بها. ماذا تفعل؟',
+        opts: ['أنقر على الرابط لاستلام جائزتي', 'أحذف الرسالة — هذا احتيال كلاسيكي', 'أسأل عن طريقة الاستلام', 'أتحقق من هويتهم أولاً'],
+        ans: 1,
+        explain: 'لا أحد يربح جائزة لم يشارك في مسابقتها. هذا أسلوب احتيال كلاسيكي للحصول على بياناتك.'
+      },
+      {
+        q: 'ما الإجراء الصحيح إذا وقعت ضحية احتيال مالي؟',
+        opts: ['أحاول استرداد الأموال بمفردي', 'أصمت لأتجنب الإحراج', 'أوثّق كل شيء وأتواصل مع الجهات الرقابية والقانونية', 'أدفع رسوم لشركة "استرداد" لمساعدتي'],
+        ans: 2,
+        explain: 'التوثيق والإبلاغ الرسمي هو المسار الصحيح. "شركات الاسترداد" كثيراً ما تكون هي أيضاً احتيالاً.'
+      },
+      {
+        q: 'ما هي "البلوكشين"؟',
+        opts: ['عملة رقمية جديدة', 'سجل رقمي موزع وشبه مستحيل التزوير', 'تطبيق لتحويل الأموال', 'نوع من الاستثمار العقاري'],
+        ans: 1,
+        explain: 'البلوكشين هي التقنية الأساسية التي تعمل عليها العملات الرقمية — سجل شفاف موزع على آلاف الأجهزة.'
+      },
+      {
+        q: 'ما هو أهم درس في الاستثمار الآمن؟',
+        opts: ['استثمر بسرعة قبل ضياع الفرص', 'الأمان أولاً — لا تستثمر ما لا تستطيع خسارته', 'اتبع نصائح المؤثرين', 'الأرباح الكبيرة تستحق المخاطرة الكبيرة'],
+        ans: 1,
+        explain: 'حماية رأس المال أولاً. المستثمر الذي يخسر كل شيء لا يستطيع البدء من جديد.'
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderProgress() {
+      const prog = document.getElementById('progress');
+      prog.innerHTML = questions.map((_, i) => 
+        `<div class="progress-dot ${i < current ? 'done' : i === current ? 'active' : ''}"></div>`
+      ).join('');
+    }
+
+    function renderQuestion() {
+      const q = questions[current];
+      answered = false;
+      document.getElementById('quizContent').innerHTML = `
+        <p style="font-family:var(--font-display); font-weight:700; font-size:0.82rem; color:var(--text-muted); margin-bottom:20px;">السؤال ${current + 1} من ${questions.length}</p>
+        <p class="quiz-q">${q.q}</p>
+        <div class="quiz-options">
+          ${q.opts.map((o, i) => `<button class="quiz-option" onclick="answer(${i})">${o}</button>`).join('')}
+        </div>
+      `;
+      renderProgress();
+    }
+
+    function answer(idx) {
+      if (answered) return;
+      answered = true;
+      const q = questions[current];
+      const opts = document.querySelectorAll('.quiz-option');
+      opts[idx].classList.add(idx === q.ans ? 'correct' : 'wrong');
+      if (idx === q.ans) {
+        score++;
+        opts[idx].innerHTML += ' ✓';
+      } else {
+        opts[idx].innerHTML += ' ✗';
+        opts[q.ans].classList.add('correct');
+        opts[q.ans].innerHTML += ' ✓';
+      }
+
+      const explain = document.createElement('p');
+      explain.style.cssText = 'margin-top:16px; padding:16px; background:rgba(13,27,62,0.05); border-radius:8px; font-size:0.88rem; color:var(--text-muted); line-height:1.7;';
+      explain.innerHTML = `💡 <strong>التفسير:</strong> ${q.explain}`;
+      document.querySelector('.quiz-options').after(explain);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'btn-primary';
+      nextBtn.style.marginTop = '20px';
+      nextBtn.textContent = current < questions.length - 1 ? 'السؤال التالي' : 'عرض نتيجتي';
+      nextBtn.onclick = () => {
+        current++;
+        if (current < questions.length) renderQuestion();
+        else showResult();
+      };
+      explain.after(nextBtn);
+    }
+
+    function showResult() {
+      const pct = Math.round(score / questions.length * 100);
+      let level, msg, color;
+      if (pct >= 80) {
+        level = 'ممتاز 🏆'; color = 'var(--safe)';
+        msg = 'وعيك الاستثماري عالٍ جداً. أنت مستعد لاتخاذ قرارات استثمارية مدروسة وآمنة.';
+      } else if (pct >= 60) {
+        level = 'جيد 👍'; color = 'var(--warn)';
+        msg = 'لديك أساس جيد لكن هناك نقاط تحتاج تطويراً. راجع المواضيع التي أجبت عليها خطأ.';
+      } else {
+        level = 'تحتاج مزيداً من التعلم 📚'; color = 'var(--danger)';
+        msg = 'لا تقلق — هذا الاختبار هو بداية رحلة التعلم. اقرأ مقالاتنا وعد للاختبار مجدداً.';
+      }
+
+      document.getElementById('quizContent').innerHTML = `
+        <div style="text-align:center; padding:20px 0;">
+          <div style="font-size:3rem; margin-bottom:16px;">🎯</div>
+          <h2 style="font-family:var(--font-display); font-weight:900; font-size:1.5rem; color:var(--navy); margin-bottom:8px;">نتيجتك: ${score}/${questions.length}</h2>
+          <div style="font-family:var(--font-display); font-weight:700; font-size:2.5rem; color:${color}; margin:12px 0;">${pct}%</div>
+          <div style="font-family:var(--font-display); font-weight:700; font-size:1.1rem; color:${color}; margin-bottom:16px;">${level}</div>
+          <p style="color:var(--text-muted); margin-bottom:32px; line-height:1.8;">${msg}</p>
+          <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+            <a href="learn.html" class="btn-primary">تعلّم المزيد</a>
+            <button class="btn-ghost" onclick="restartQuiz()" style="color:var(--navy); border-color:var(--navy);">أعد الاختبار</button>
+          </div>
+        </div>
+      `;
+      document.getElementById('progress').innerHTML = questions.map(() => `<div class="progress-dot done"></div>`).join('');
+    }
+
+    function restartQuiz() {
+      current = 0; score = 0;
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script>
+</body>
+</html>
